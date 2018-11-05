@@ -14,13 +14,20 @@ function Product(name, src) {
   for (var i = 0; i < productNames; i++) {
     new Product(productNames[i], './assets/' + productNames[i] + '.jpg');
   }
-});
+})();
 
 var tracker = {
-  products: [],
+  // products: [],
   totalClicks: 0,
+  leftOption: null,
+  middleOption: null,
+  rightOption: null,
 
   mainEl: document.getElementById('main-content'),
+  leftEl: document.getElementById('leftimg'),
+  middleEl: document.getElementById('middleimg'),
+  rightEl: document.getElementById('rightimg'),
+
 
   getRandomIndex: function() {
     return Math.floor(Math.random() * productNames.length);
@@ -41,4 +48,4 @@ var tracker = {
 
 (function createProducts() {
 
-})()
+})();
