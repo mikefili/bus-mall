@@ -1,20 +1,36 @@
 'use strict';
-var products = [];
+var allProducts = [];
+var productNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 
-function Product(name, src, votes) {
+function Product(name, src) {
   this.name = name;
   this.src = src;
-  this.votes = votes;
+  this.tally = 0;
+  this.votes = 0;
+  allProducts.push(this);
 }
+
+(function itemList() {
+  for (var i = 0; i < productNames; i++) {
+    new Product(productNames[i], './assets/' + productNames[i] + '.jpg');
+  }
+})();
 
 var tracker = {
   // products: [],
   totalClicks: 0,
+  leftOption: null,
+  middleOption: null,
+  rightOption: null,
 
   mainEl: document.getElementById('main-content'),
+  leftEl: document.getElementById('leftimg'),
+  middleEl: document.getElementById('middleimg'),
+  rightEl: document.getElementById('rightimg'),
+
 
   getRandomIndex: function() {
-
+    return Math.floor(Math.random() * productNames.length);
   },
   getUniqueImages: function() {
 
@@ -32,4 +48,4 @@ var tracker = {
 
 (function createProducts() {
 
-})()
+})();
