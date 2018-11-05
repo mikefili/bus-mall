@@ -18,4 +18,4 @@ User:
 
   - As a user I want to got to the site and be presented 3 random images so I can pick my favorite.
   - As a user I want to be presented 3 random images every time I select from my 3 current options.
-  - As a user I want to see a summary of my selections after I have completed the survey.
+  - As a user I want to see a summary of my selections after I have completed the survey.'
