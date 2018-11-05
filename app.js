@@ -2,7 +2,9 @@
 var products = [];
 
 function Product(name, src, votes) {
-
+  this.name = name;
+  this.src = src;
+  this.votes = votes;
 }
 
 var tracker = {
