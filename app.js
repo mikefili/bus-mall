@@ -2,25 +2,22 @@
 
 var allProducts = [];
 var productNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
-var productFP = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.jpg', 'tauntaun.jpg', 'unicorn.jpg', 'usb.jpg', 'water-can.jpg', 'wine-glass.jpg'];
-'use strict';
 
 function Product(name, path) {
   this.name = name;
-  this.path = 'assets/' + path;
+  this.path = path;
   this.votes = 0;
   allProducts.push(this);
 }
 
 (function() {
   for (var i = 0; i < productNames.length; i++) {
-    new Product(productNames[i], productFP[i]);
+    new Product(productNames[i], 'assets/' + productNames[i] + '.jpg');
   }
 })();
 
 var tracker = {
   clickCount: 0,
-
   imgOne: document.getElementById('left-img'),
   imgTwo: document.getElementById('middle-img'),
   imgThree: document.getElementById('right-img'),
@@ -44,7 +41,6 @@ var tracker = {
     this.imgOne.id = randOne;
     this.imgTwo.id = randTwo;
     this.imgThree.id = randThree;
-
   },
 
   addClickTracker: function() {
@@ -69,7 +65,7 @@ var tracker = {
     }
     tracker.resetButton();
   },
- 
+
   resetButton: function() {
     var reset = document.getElementById('reset');
     var button = document.createElement('button');
@@ -86,10 +82,3 @@ tracker.renderImages();
 tracker.imgOne.addEventListener('click', tracker.addClickTracker);
 tracker.imgTwo.addEventListener('click', tracker.addClickTracker);
 tracker.imgThree.addEventListener('click', tracker.addClickTracker);
-
-//   getUniqueImages: function() {
-//   },
-
-//   clickHandler: function() {
-
-//    }
