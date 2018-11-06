@@ -8,6 +8,7 @@ function Product(name, path) {
   this.name = name;
   this.path = path;
   this.votes = 0;
+  this.seen = 0;
   allProducts.push(this);
 }
 
