@@ -19,7 +19,7 @@ function Product(name, path) {
 })();
 
 var tracker = {
-  clickCounter: 0,
+  clickCount: 0,
 
   imgOne: document.getElementById('left-img'),
   imgTwo: document.getElementById('middle-img'),
@@ -48,10 +48,10 @@ var tracker = {
   },
 
   addClickTracker: function() {
-    tracker.clickCounter++;
+    tracker.clickCount++;
     allProducts[event.target.id].votes++;
 
-    if (tracker.clickCounter === 25) {
+    if (tracker.clickCount === 25) {
       tracker.displayResults();
     } else {
       tracker.renderImages();
@@ -69,7 +69,7 @@ var tracker = {
     }
     tracker.resetButton();
   },
-
+ 
   resetButton: function() {
     var reset = document.getElementById('reset');
     var button = document.createElement('button');
