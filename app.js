@@ -9,6 +9,7 @@ function Product(name, path) {
   this.path = path;
   this.votes = 0;
   this.seen = 0;
+  this.myChart = null;
   allProducts.push(this);
 }
 
@@ -37,6 +38,10 @@ var tracker = {
       return;
     }
 
+    allProducts[randOne].seen++;
+    allProducts[randTwo].seen++;
+    allProducts[randThree].seen++;
+
     this.imgOne.src = allProducts[randOne].path;
     this.imgTwo.src = allProducts[randTwo].path;
     this.imgThree.src = allProducts[randThree].path;
@@ -57,11 +62,10 @@ var tracker = {
   },
 
   displayResults: function() {
+    var chartData = [];
     var results = document.getElementById('results');
-    console.log(results);
     for (var i = 0; i < allProducts.length; i++) {
       var sentence = document.createElement('li');
-      console.log(sentence);
       sentence.textContent = allProducts[i].votes + ' votes for the ' + allProducts[i].name;
       results.appendChild(sentence);
     }
