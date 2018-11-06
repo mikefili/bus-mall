@@ -37,6 +37,10 @@ var tracker = {
       return;
     }
 
+    allProducts[randOne].seen++;
+    allProducts[randTwo].seen++;
+    allProducts[randThree].seen++;
+
     this.imgOne.src = allProducts[randOne].path;
     this.imgTwo.src = allProducts[randTwo].path;
     this.imgThree.src = allProducts[randThree].path;
