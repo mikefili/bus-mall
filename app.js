@@ -1,34 +1,32 @@
 'use strict';
+
 var allProducts = [];
 var productNames = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
-var productFP = ['assets/bag.jpg', 'assets/banana.jpg', 'assets/bathroom.jpg', 'assets/boots.jpg', 'assets/breakfast.jpg', 'assets/bubblegum.jpg', 'assets/chair.jpg', 'assets/cthulhu.jpg', 'assets/dog-duck.jpg', 'assets/dragon.jpg', 'assets/pen.jpg', 'assets/pet-sweep.jpg', 'assets/scissors.jpg', 'assets/shark.jpg', 'assets/sweep.jpg', 'assets/tauntaun.jpg', 'assets/unicorn.jpg', 'assets/usb.jpg', 'assets/water-can.jpg', 'assets/wine-glass.jpg'];
+var productFP = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.jpg', 'tauntaun.jpg', 'unicorn.jpg', 'usb.jpg', 'water-can.jpg', 'wine-glass.jpg'];
+'use strict';
 
-function Product(name, src) {
+function Product(name, path) {
   this.name = name;
-  this.src = src;
+  this.path = 'assets/' + path;
   this.votes = 0;
-  this.timesSeen = 0;
-  this.results = null;
   allProducts.push(this);
 }
+
+(function() {
+  for (var i = 0; i < productNames.length; i++) {
+    new Product(productNames[i], productFP[i]);
+  }
+})();
+
 var tracker = {
+  clickCounter: 0,
+
+  imgOne: document.getElementById('left-img'),
+  imgTwo: document.getElementById('middle-img'),
+  imgThree: document.getElementById('right-img'),
 
   getRandomIndex: function() {
     return Math.floor(Math.random() * allProducts.length);
-
-
-
-
-
-
-
-
-
-
-  },
-
-  getUniqueImages: function() {
-
   },
 
   renderImages: function() {
@@ -36,17 +34,62 @@ var tracker = {
     var randTwo = this.getRandomIndex();
     var randThree = this.getRandomIndex();
 
+    if (randOne === randTwo || randTwo === randThree || randThree === randOne) {
+      return;
+    }
+
+    this.imgOne.src = allProducts[randOne].path;
+    this.imgTwo.src = allProducts[randTwo].path;
+    this.imgThree.src = allProducts[randThree].path;
+    this.imgOne.id = randOne;
+    this.imgTwo.id = randTwo;
+    this.imgThree.id = randThree;
+
   },
 
   addClickTracker: function() {
+    tracker.clickCounter++;
+    allProducts[event.target.id].votes++;
 
+    if (tracker.clickCounter === 25) {
+      tracker.displayResults();
+    } else {
+      tracker.renderImages();
+    }
   },
 
-  clickHandler: function() {
-
+  displayResults: function() {
+    var results = document.getElementById('results');
+    console.log(results);
+    for (var i = 0; i < allProducts.length; i++) {
+      var sentence = document.createElement('li');
+      console.log(sentence);
+      sentence.textContent = allProducts[i].votes + ' votes for the ' + allProducts[i].name;
+      results.appendChild(sentence);
+    }
+    tracker.resetButton();
   },
+
+  resetButton: function() {
+    var reset = document.getElementById('reset');
+    var button = document.createElement('button');
+    button.innerHTML = 'RESET';
+    reset.appendChild(button);
+    button.addEventListener ('click', function() {
+      location.reload();
+    });
+  }
 };
 
-(function createProducts() {
+tracker.renderImages();
 
-})();
+tracker.imgOne.addEventListener('click', tracker.addClickTracker);
+tracker.imgTwo.addEventListener('click', tracker.addClickTracker);
+tracker.imgThree.addEventListener('click', tracker.addClickTracker);
+
+//   getUniqueImages: function() {
+//   },
+
+//   clickHandler: function() {
+
+//    }
