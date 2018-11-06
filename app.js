@@ -9,6 +9,7 @@ function Product(name, path) {
   this.path = path;
   this.votes = 0;
   this.seen = 0;
+  this.myChart = null;
   allProducts.push(this);
 }
 
@@ -61,11 +62,10 @@ var tracker = {
   },
 
   displayResults: function() {
+    var chartData = [];
     var results = document.getElementById('results');
-    console.log(results);
     for (var i = 0; i < allProducts.length; i++) {
       var sentence = document.createElement('li');
-      console.log(sentence);
       sentence.textContent = allProducts[i].votes + ' votes for the ' + allProducts[i].name;
       results.appendChild(sentence);
     }
