@@ -12,7 +12,7 @@
 <div id="window">
   <header>
     <div id="header-logo">
-      <img src="https://via.placeholder.com/200x50">
+      <img src="https://via.placeholder.com/200x50/000">
       <h1 id="logo-text">Bus-Mall</h1>
       <span id="nav">
         <a href="index.html">Home</a> | 
@@ -26,8 +26,8 @@
   <body>
     <main>
       <div id="data">
-        <ul id="results"><span id="results-text">Results:</span>
-        </ul>
+        <span id="results-text">Results:</span>
+          <canvas id="cnvs" width="280px" height="450"></canvas>
         <div id="reset"></div>
       </div>
       <div id="options">
@@ -39,7 +39,8 @@
         </div>
       </div>
     </main>
-    <script type="text/javascript" src="app.js"> </script>
+    <script type="text/javascript" src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
   </body>
   <footer></footer>
 </div>

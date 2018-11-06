@@ -69,9 +69,14 @@ footer {
 #results-text {
   font-size: 30px;
   font-variant: small-caps;
-  margin-left: 55px;
+  margin-left: 100px;
 }
 
 #reset {
   text-align: center;
+}
+
+#cnvs {
+  outline: 1px solid lightgray;
+  margin-left: 10px;
 }
