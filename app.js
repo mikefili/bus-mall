@@ -8,7 +8,7 @@ function Product(name, path) {
   this.path = path;
   this.votes = 0;
   this.seen = 0;
-  this.myChart = null;
+  this.cnvs = null;
   allProducts.push(this);
 }
 
@@ -73,8 +73,8 @@ var tracker = {
       data.push(allProducts[i].votes);
     }
     var results = document.getElementById('results');
-    var ctx = document.getElementById('myChart').getContext('2d');
-    tracker.myChart = new Chart(ctx, {
+    var ctx = document.getElementById('cnvs').getContext('2d');
+    tracker.cnvs = new Chart(ctx, {
       type: 'bar',
       data: {
         labels: productNames,
@@ -102,6 +102,28 @@ var tracker = {
             'rgba(0, 255, 210, 0.2)',
             'rgba(0, 255, 255, 0.2)',
             'rgba(0, 210, 255, 0.2)'
+          ],
+          hoverBackgroundColor: [
+            'rgba(255, 0, 0, 0.6)',
+            'rgba(255, 42, 0, 0.6)',
+            'rgba(255, 84, 0, 0.6)',
+            'rgba(255, 126, 0, 0.6)',
+            'rgba(255, 168, 0, 0.6)',
+            'rgba(255, 210, 0, 0.6)',
+            'rgba(255, 255, 0, 0.6)',
+            'rgba(210, 255, 0, 0.6)',
+            'rgba(168, 255, 0, 0.6)',
+            'rgba(126, 255, 0, 0.6)',
+            'rgba(84, 255, 0, 0.6)',
+            'rgba(42, 255, 0, 0.6)',
+            'rgba(0, 255, 0, 0.6)',
+            'rgba(0, 255, 42, 0.6)',
+            'rgba(0, 255, 84, 0.6)',
+            'rgba(0, 255, 126, 0.6)',
+            'rgba(0, 255, 168, 0.6)',
+            'rgba(0, 255, 210, 0.6)',
+            'rgba(0, 255, 255, 0.6)',
+            'rgba(0, 210, 255, 0.6)'
           ],
           borderColor: [
             'rgba(0, 0, 0, 0.9)',
@@ -146,7 +168,7 @@ var tracker = {
   resetButton: function() {
     var reset = document.getElementById('reset');
     var button = document.createElement('button');
-    button.innerHTML = 'RESET';
+    button.textContent = 'RESET';
     reset.appendChild(button);
     button.addEventListener ('click', function() {
       location.reload();
@@ -155,6 +177,7 @@ var tracker = {
 };
 
 tracker.renderImages();
+tracker.resetButton();
 
 tracker.imgOne.addEventListener('click', tracker.addClickTracker);
 tracker.imgTwo.addEventListener('click', tracker.addClickTracker);
