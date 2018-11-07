@@ -45,7 +45,7 @@ footer {
   margin-right: 500px;
 }
 
-#data {
+#chart {
   float: left;
   outline: 1px solid lightgrey;
   width: 915px;
@@ -72,6 +72,7 @@ footer {
   margin-bottom: 15px;
   font-size: 18px;
   width: 915px;
+  text-align: justify;
 }
 
 #results-text {
@@ -84,6 +85,6 @@ footer {
   text-align: center;
 }
 
-#cnvs {
+#myChart {
   outline: 1px solid lightgray;
 }
