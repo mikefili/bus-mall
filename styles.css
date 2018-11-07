@@ -56,11 +56,13 @@ footer {
   height: 500px;
   margin-right: 5px;
   margin-top: 5px;
+  margin-bottom: 5px;
   font-family: 'Lato', sans-serif;
 }
 
 #options {
   width: 1300px;
+  height: auto;
 }
 
 #options img {
@@ -85,6 +87,7 @@ footer {
   font-size: 30px;
   font-variant: small-caps;
   text-align: center;
+  padding-bottom: 15px;
 }
 
 #reset {
@@ -92,6 +95,7 @@ footer {
 }
 
 #reset button {
+  margin-top: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 50px;
@@ -104,4 +108,5 @@ footer {
 
 #cnvs {
   outline: 1px solid lightgray;
+  display: block;
 }
