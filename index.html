@@ -25,21 +25,24 @@
 
   <body>
     <main>
+      <div id="chart">
+        <div id="results-text">Results:</div>
+        <canvas id="cnvs" width="300px" height="450"></canvas>
+        <div id="reset"></div>
+      </div>
       <div id="options">
         <img id="left-img">
         <img id="middle-img">
         <img id="right-img">
         <div id="options-text">
           <h1>Thank you for taking part in Bus Mall's focus group survey!</h1>
-          <p>Each time the page loads, you will be presented with a new set of 3 products. It is then up to you to select your favorite of the three items shown. Your selections will tallied over your first 25 selections. Once our results are tabulated, they will be available in a chart below these instructions.</p>
-          <p>Feel free to take the survey as many times as you would like. Have your friends nearby take it as well. The more data collected, the better we get!</p>
+          <p>Each time the page loads, you will be presented with a new set of 3 products. It is then up to you to
+            select your favorite of the three items shown. Your selections will tallied over your first 25 selections.
+            Once our results are tabulated, they will be available in a chart below these instructions.</p>
+          <p>Feel free to take the survey as many times as you would like. Have your friends nearby take it as well.
+            The more data collected, the better we get!</p>
         </div>
       </div>
-      <div id="chart">
-        <div id="results-text">Results:</div>
-        <canvas id="cnvs" width="915px" height="450"></canvas>
-      </div>
-      <div id="reset"></div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
