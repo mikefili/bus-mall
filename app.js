@@ -1,7 +1,6 @@
 'use strict';
 
 var allProducts = [];
-// var lastSet = [];
 var productNames = ['Bag', 'Banana', 'Bathroom', 'Boots', 'Breakfast', 'Bubblegum', 'Chair', 'Cthulhu', 'Dog-Duck', 'Dragon', 'Pen', 'Pet-Sweep', 'Scissors', 'Shark', 'Sweep', 'Tauntaun', 'Unicorn', 'USB', 'Water-Can', 'Wine-Glass'];
 
 function Product(name, path) {
@@ -45,9 +44,16 @@ var tracker = {
     this.imgOne.src = allProducts[randOne].path;
     this.imgTwo.src = allProducts[randTwo].path;
     this.imgThree.src = allProducts[randThree].path;
+
     this.imgOne.id = randOne;
     this.imgTwo.id = randTwo;
     this.imgThree.id = randThree;
+  },
+
+  disableListeners: function() {
+    tracker.imgOne.removeEventListener('click', tracker.addClickTracker);
+    tracker.imgTwo.removeEventListener('click', tracker.addClickTracker);
+    tracker.imgThree.removeEventListener('click', tracker.addClickTracker);
   },
 
   addClickTracker: function() {
@@ -76,20 +82,48 @@ var tracker = {
           label: '# of Votes',
           data: data,
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
+            'rgba(255, 0, 0, 0.2)',
+            'rgba(255, 42, 0, 0.2)',
+            'rgba(255, 84, 0, 0.2)',
+            'rgba(255, 126, 0, 0.2)',
+            'rgba(255, 168, 0, 0.2)',
+            'rgba(255, 210, 0, 0.2)',
+            'rgba(255, 255, 0, 0.2)',
+            'rgba(210, 255, 0, 0.2)',
+            'rgba(168, 255, 0, 0.2)',
+            'rgba(126, 255, 0, 0.2)',
+            'rgba(84, 255, 0, 0.2)',
+            'rgba(42, 255, 0, 0.2)',
+            'rgba(0, 255, 0, 0.2)',
+            'rgba(0, 255, 42, 0.2)',
+            'rgba(0, 255, 84, 0.2)',
+            'rgba(0, 255, 126, 0.2)',
+            'rgba(0, 255, 168, 0.2)',
+            'rgba(0, 255, 210, 0.2)',
+            'rgba(0, 255, 255, 0.2)',
+            'rgba(0, 210, 255, 0.2)'
           ],
           borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)',
+            'rgba(0, 0, 0, 0.9)'
           ],
           borderWidth: 1
         }]
@@ -104,7 +138,8 @@ var tracker = {
         }
       }
     });
-
+    tracker.disableListeners();
+    results.appendChild(ctx);
     tracker.resetButton();
   },
 
