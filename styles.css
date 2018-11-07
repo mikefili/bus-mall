@@ -1,6 +1,6 @@
 body {
   font-family: 'Lato', sans-serif;
-  width: 1200px;
+  width: 1215px;
   height: auto;
   margin-left: auto;
   margin-right: auto;
@@ -8,7 +8,7 @@ body {
 }
 
 main {
-  width: 915px;
+  width: 1225px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
@@ -52,26 +52,30 @@ footer {
 
 #chart {
   float: left;
-  width: 915px;
+  width: 300px;
   height: 500px;
   margin-right: 5px;
   margin-top: 5px;
+  margin-bottom: 5px;
   font-family: 'Lato', sans-serif;
 }
 
 #options {
-  width: 915px;
+  width: 1300px;
+  height: auto;
 }
 
 #options img {
   outline: 1px solid lightgray;
   font-family: 'Lato', sans-serif;
   margin-top: 5px;
+  margin-right: 2px;
   width: 300px;
   height: 300px;
 }
 
 #options-text {
+  display: table-cell;
   margin-top: 50px;
   margin-bottom: 15px;
   font-size: 18px;
@@ -83,6 +87,7 @@ footer {
   font-size: 30px;
   font-variant: small-caps;
   text-align: center;
+  padding-bottom: 15px;
 }
 
 #reset {
@@ -90,6 +95,7 @@ footer {
 }
 
 #reset button {
+  margin-top: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 50px;
@@ -102,4 +108,5 @@ footer {
 
 #cnvs {
   outline: 1px solid lightgray;
+  display: block;
 }
