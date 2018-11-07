@@ -75,7 +75,7 @@ var tracker = {
     var results = document.getElementById('results');
     var ctx = document.getElementById('cnvs').getContext('2d');
     tracker.cnvs = new Chart(ctx, {
-      type: 'bar',
+      type: 'horizontalBar',
       data: {
         labels: productNames,
         datasets: [{
