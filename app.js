@@ -123,11 +123,23 @@ var tracker = {
     button.addEventListener ('click', function() {
       location.reload();
     });
-  }
+  },
+  clearLocalStorage: function() {
+    var nuke = document.getElementById('nuke');
+    var button = document.createElement('button');
+    button.textContent = 'CLEAR HISTORY';
+    nuke.appendChild(button);
+    button.addEventListener ('click', function() {
+      localStorage.clear();
+      location.reload();
+    });
+  },
+
 };
 
 tracker.resetButton();
 tracker.renderImages();
+tracker.clearLocalStorage();
 
 tracker.imgOne.addEventListener('click', tracker.addClickTracker);
 tracker.imgTwo.addEventListener('click', tracker.addClickTracker);
