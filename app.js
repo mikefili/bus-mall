@@ -133,8 +133,12 @@ var clearOut = function() {
   button.textContent = 'CLEAR';
   nuke.appendChild(button);
   button.addEventListener ('click', function() {
-    localStorage.clear();
-    location.reload();
+    if (window.confirm('Do you really want to clear the data?')) {
+      localStorage.clear();
+      location.reload();
+    } else {
+      return;
+    }
   });
 };
 
