@@ -3,20 +3,26 @@
 var allProducts = [];
 var productNames = ['Bag', 'Banana', 'Bathroom', 'Boots', 'Breakfast', 'Bubblegum', 'Chair', 'Cthulhu', 'Dog-Duck', 'Dragon', 'Pen', 'Pet-Sweep', 'Scissors', 'Shark', 'Sweep', 'Tauntaun', 'Unicorn', 'USB', 'Water-Can', 'Wine-Glass'];
 
-function Product(name, path) {
+function Product(name, path, votes) {
   this.name = name;
   this.path = path;
-  this.votes = 0;
-  this.seen = 0;
-  this.cnvs = null;
+  this.votes = votes;
   allProducts.push(this);
 }
 
-(function() {
-  for (var i = 0; i < productNames.length; i++) {
-    new Product(productNames[i], 'assets/' + productNames[i] + '.jpg');
+if (window.localStorage.length === 0) {
+  (function() {
+    for (var i = 0; i < productNames.length; i++) {
+      new Product(productNames[i], 'assets/' + productNames[i] + '.jpg');
+    }
+  })();
+} else {
+  var decoded = JSON.parse(localStorage.getItem('allProducts'));
+  for (var i = 0; i < decoded.length; i++) {
+    new Product(decoded[i].name, decoded[i].path, decoded[i].votes);
+    console.log(decoded[i].votes);
   }
-})();
+}
 
 var tracker = {
   clickCount: 0,
@@ -37,9 +43,9 @@ var tracker = {
       return;
     }
 
-    allProducts[randOne].seen++;
-    allProducts[randTwo].seen++;
-    allProducts[randThree].seen++;
+    // allProducts[randOne].seen++;
+    // allProducts[randTwo].seen++;
+    // allProducts[randThree].seen++;
 
     this.imgOne.src = allProducts[randOne].path;
     this.imgTwo.src = allProducts[randTwo].path;
@@ -61,10 +67,16 @@ var tracker = {
     allProducts[event.target.id].votes++;
 
     if (tracker.clickCount === 25) {
+      tracker.addToLocalStorage();
       tracker.displayResults();
     } else {
       tracker.renderImages();
     }
+  },
+
+  addToLocalStorage: function () {
+    var encoded = JSON.stringify(allProducts);
+    localStorage.setItem('allProducts', encoded);
   },
 
   displayResults: function() {
@@ -101,8 +113,6 @@ var tracker = {
       }
     });
     tracker.disableListeners();
-    results.appendChild(ctx);
-    tracker.resetButton();
   },
 
   resetButton: function() {
@@ -116,8 +126,8 @@ var tracker = {
   }
 };
 
-tracker.renderImages();
 tracker.resetButton();
+tracker.renderImages();
 
 tracker.imgOne.addEventListener('click', tracker.addClickTracker);
 tracker.imgTwo.addEventListener('click', tracker.addClickTracker);
