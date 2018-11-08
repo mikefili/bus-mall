@@ -13,14 +13,13 @@ function Product(name, path, votes) {
 if (window.localStorage.length === 0) {
   (function() {
     for (var i = 0; i < productNames.length; i++) {
-      new Product(productNames[i], 'assets/' + productNames[i] + '.jpg');
+      new Product(productNames[i], 'assets/' + productNames[i] + '.jpg', 0);
     }
   })();
 } else {
   var decoded = JSON.parse(localStorage.getItem('allProducts'));
   for (var i = 0; i < decoded.length; i++) {
     new Product(decoded[i].name, decoded[i].path, decoded[i].votes);
-    console.log(decoded[i].votes);
   }
 }
 
@@ -42,10 +41,6 @@ var tracker = {
     if (randOne === randTwo || randTwo === randThree || randThree === randOne) {
       return;
     }
-
-    // allProducts[randOne].seen++;
-    // allProducts[randTwo].seen++;
-    // allProducts[randThree].seen++;
 
     this.imgOne.src = allProducts[randOne].path;
     this.imgTwo.src = allProducts[randTwo].path;
@@ -84,7 +79,6 @@ var tracker = {
     for (var i = 0; i < allProducts.length; i++) {
       data.push(allProducts[i].votes);
     }
-    var results = document.getElementById('results');
     var ctx = document.getElementById('cnvs').getContext('2d');
     tracker.cnvs = new Chart(ctx, {
       type: 'horizontalBar',
@@ -123,24 +117,25 @@ var tracker = {
     button.addEventListener ('click', function() {
       location.reload();
     });
-  },
-  clearLocalStorage: function() {
-    var nuke = document.getElementById('nuke');
-    var button = document.createElement('button');
-    button.textContent = 'CLEAR HISTORY';
-    nuke.appendChild(button);
-    button.addEventListener ('click', function() {
-      localStorage.clear();
-      location.reload();
-    });
-  },
-
+  }
 };
 
 tracker.resetButton();
 tracker.renderImages();
-tracker.clearLocalStorage();
 
 tracker.imgOne.addEventListener('click', tracker.addClickTracker);
 tracker.imgTwo.addEventListener('click', tracker.addClickTracker);
 tracker.imgThree.addEventListener('click', tracker.addClickTracker);
+
+var clearOut = function() {
+  var nuke = document.getElementById('nuke');
+  var button = document.createElement('button');
+  button.textContent = 'CLEAR';
+  nuke.appendChild(button);
+  button.addEventListener ('click', function() {
+    localStorage.clear();
+    location.reload();
+  });
+};
+
+clearOut();
